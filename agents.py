@@ -35,3 +35,18 @@ class SocraticAgents():
             "maieutics": "Use analogies to help the user discover the truth themselves. Do not give the answer.",
             "dialectic": "Evaluate the user's progress. Assign a mastery score from 0.0 to 1.0."
         }
+
+    def arbiter_node():
+        pass
+
+    def elenchus_node():
+        pass
+
+    def aporia_node():
+        pass
+
+    def maieutics_node():
+        pass
+
+    def dialectic_node():
+        pass
