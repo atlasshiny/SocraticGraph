@@ -38,11 +38,11 @@ class SocraticAgents():
 
         # The system "objective" prompts
         self.prompts = {
-            "arbiter": "Analyze the conversation. Route to 'elenchus' if the user is overconfident, or 'maieutics' if they need help.",
+            "arbiter": "Analyze the conversation and decide which agent should respond next. Reply with exactly one token: elenchus, aporia, or maieutics.",
             "elenchus": "Find logical contradictions in the user's statement. Be sharp and persistent.",
             "aporia": "Create a sense of wonder and doubt. Use paradoxes to show why this topic is difficult.",
             "maieutics": "Use analogies to help the user discover the truth themselves. Do not give the answer.",
-            "dialectic": "Evaluate the user's progress. Assign a mastery score from 0.0 to 1.0."
+            "dialectic": "Evaluate the user's progress. Assign a single mastery score value between 0.0 to 1.0."
         }
 
     def _parse_score(self, ai_output: str) -> float:
