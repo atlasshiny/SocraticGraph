@@ -21,8 +21,8 @@ class SocraticAgents():
         else:
             arbiter_model = elenchus_model = aporia_model = maieutics_model = dialectic_model = "llama3.1:8b-instruct-q2_K"
 
-        # The Orchestrator: Lowest temperature (0.0) for high precision, logical routing, and intent classification.
-        self.arbiter_llm = ChatOllama(model=arbiter_model, temperature=0.0, backend=ollama_backend)
+        # The Orchestrator: Low temperature (0.1) for high precision, logical routing, and intent classification.
+        self.arbiter_llm = ChatOllama(model=arbiter_model, temperature=0.1, backend=ollama_backend)
 
         # The Adversary: Tuned for logical rigor and cross-examination. Low temperature (0.1) for solid, factual responses
         self.elenchus_llm = ChatOllama(model=elenchus_model, temperature=0.1, backend=ollama_backend)
