@@ -1,14 +1,10 @@
 from langchain_ollama import ChatOllama
 from langchain_core.messages import SystemMessage, HumanMessage
 from agent_state import SocraticState 
-import torch
 
 class SocraticAgents():
     def __init__(self, context_switch: bool = True):
-        gpu_available = torch.cuda.is_available()
-        print(gpu_available)
-        ollama_backend = "cuda" if gpu_available else None
-        print(ollama_backend)
+        ollama_backend = "cuda"
 
         if context_switch:
             arbiter_model = "phi4-mini:3.8b-q4_K_M"
