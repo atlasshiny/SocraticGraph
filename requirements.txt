@@ -3,3 +3,5 @@ langchain-ollama
 langchain-core
 langgraph
 langgraph-checkpoint
+numpy
+torch --index-url https://download.pytorch.org/whl/cu130 # this is for cuda 13.0; make sure the correct torch version is installed for the CUDA on your computer

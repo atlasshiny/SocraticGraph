@@ -1,9 +1,15 @@
 from langchain_ollama import ChatOllama
 from langchain_core.messages import SystemMessage, HumanMessage
-from agent_state import SocraticState
+from agent_state import SocraticState 
+import torch
 
 class SocraticAgents():
     def __init__(self, context_switch: bool = True):
+        gpu_available = torch.cuda.is_available()
+        print(gpu_available)
+        ollama_backend = "cuda" if gpu_available else None
+        print(ollama_backend)
+
         if context_switch:
             arbiter_model = "phi4-mini:3.8b-q4_K_M"
             elenchus_model = "mistral:7b-instruct-v0.3-q3_K_S"
@@ -14,19 +20,19 @@ class SocraticAgents():
             arbiter_model = elenchus_model = aporia_model = maieutics_model = dialectic_model = "llama3.1:8b-instruct-q2_K"
 
         # The Orchestrator: Lowest temperature (0.0) for high precision, logical routing, and intent classification.
-        self.arbiter_llm = ChatOllama(model=arbiter_model, temperature=0.0)
+        self.arbiter_llm = ChatOllama(model=arbiter_model, temperature=0.0, backend=ollama_backend)
 
         # The Adversary: Tuned for logical rigor and cross-examination. Low temperature (0.1) for solid, factual responses
-        self.elenchus_llm = ChatOllama(model=elenchus_model, temperature=0.1)
+        self.elenchus_llm = ChatOllama(model=elenchus_model, temperature=0.1, backend=ollama_backend)
 
         # The Puzzler: Slightly higher temperature (0.7) to allow for creative analogies and the generation of 'productive doubt' paradoxes.
-        self.aporia_llm = ChatOllama(model=aporia_model, temperature=0.7)
+        self.aporia_llm = ChatOllama(model=aporia_model, temperature=0.7, backend=ollama_backend)
 
         #The Midwife: Balanced temperature (0.5) for clear, constructive scaffolding and analogy-based knowledge synthesis.
-        self.maieutics_llm = ChatOllama(model=maieutics_model, temperature=0.5)
+        self.maieutics_llm = ChatOllama(model=maieutics_model, temperature=0.5, backend=ollama_backend)
 
         #The Auditor: Evaluates state transitions and verifies concept mastery. Lowest temperature (0.0) for objectiveness and determinism.
-        self.dialectic_llm = ChatOllama(model=dialectic_model, temperature=0.0)
+        self.dialectic_llm = ChatOllama(model=dialectic_model, temperature=0.0, backend=ollama_backend)
 
         # The system "objective" prompts
         self.prompts = {
