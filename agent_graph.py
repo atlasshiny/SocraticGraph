@@ -6,11 +6,11 @@ def create_agent_graph(agents: SocraticAgents):
     # Create the state for the graph
     state = StateGraph(SocraticState)
 
-    state.add_node("arbiter", agents.arbiter_node())
-    state.add_node("elenchus", agents.elenchus_node())
-    state.add_node("aporia", agents.aporia_node())
-    state.add_node("maieutics", agents.maieutics_node())
-    state.add_node("dialectic", agents.dialectic_node())
+    state.add_node("arbiter", agents.arbiter_node)
+    state.add_node("elenchus", agents.elenchus_node)
+    state.add_node("aporia", agents.aporia_node)
+    state.add_node("maieutics", agents.maieutics_node)
+    state.add_node("dialectic", agents.dialectic_node)
 
     # Since arbiter is supposed to feed into which learning model is going to be used, it is the starting point
     state.set_entry_point("arbiter")
