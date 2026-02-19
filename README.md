@@ -1,1 +1,1 @@
-# maieutic_agent_loop
+# SocraticGraph
