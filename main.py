@@ -6,7 +6,7 @@ def main():
     """
     Main entry point for the Socratic agent loop. Handles user input, runs the agent graph, and displays output.
     """
-    agents = SocraticAgents(context_switch=False)
+    agents = SocraticAgents(context_switch=True)
 
     loop = create_agent_graph(agents=agents)
 
@@ -23,6 +23,9 @@ def main():
                 # Print messages from the agents so the user can see the communication
                 if "messages" in output:
                     print(f"\n[{node_name.upper()}]: {output['messages'][-1].content}")
+                # Print raw arbiter output for debugging when available
+                if "arbiter_raw" in output:
+                    print(f"[ARBITER_RAW]: {output['arbiter_raw']}")
                 if "mastery_score" in output:
                     print(f"--- Current Mastery Score: {output['mastery_score']} ---")
 
