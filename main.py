@@ -60,6 +60,7 @@ def main():
     history_enabled = HISTORY_ENABLED_DEFAULT
     history = _load_history(history_path) if history_enabled else []
 
+    print("Toggle message history with 'history on/off' or reset with 'reset")
     while True:
         user_input = input("User: ")
 
