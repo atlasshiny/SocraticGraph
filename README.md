@@ -15,6 +15,7 @@ This repository provides a minimal CLI runner, agent implementations, and a grap
 - `agents.py` — implementations of the role-based nodes and prompts.
 - `agent_graph.py` — constructs the `StateGraph` and edges between nodes.
 - `agent_state.py` — typed state shape used by the graph.
+- `history.py` — keeps track of message history and recovering previous message history.
 - `requirements.txt` — Python dependencies (install into a venv).
 
 ## Quickstart
@@ -40,7 +41,7 @@ This repository provides a minimal CLI runner, agent implementations, and a grap
    python main.py
    ```
 
-Type a question when prompted. Enter `quit` or `exit` to terminate.
+Type a question when prompted. Enter `options` to change settings. Enter `quit` or `exit` to terminate.
 
 ## Configuration and Notes
 
