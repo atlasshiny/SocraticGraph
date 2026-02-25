@@ -1,5 +1,5 @@
 # SocraticGraph
-[![Technical Whitepaper](https://img.shields.io/badge/Read-Whitepaper-blue?style=for-the-badge&logo=adobeacrobatreader)](./SocraticGraph_Whitepaper.pdf)
+[![Technical Whitepaper](https://img.shields.io/badge/Read-Whitepaper-blue?style=for-the-badge&logo=adobeacrobatreader)](./docs/SocraticGraph_Whitepaper.pdf)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![LangChain](https://img.shields.io/badge/LangChain-121212?style=for-the-badge&logo=chainlink&logoColor=white)
 ![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
