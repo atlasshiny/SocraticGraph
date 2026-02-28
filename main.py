@@ -111,7 +111,6 @@ def main():
         agent_messages = []
 
         # Stream the graph execution
-        finished = False
         for event in loop.stream({"messages": turn_messages}):
             for node_name, output in event.items():
                 # Print messages from the agents so the user can see the communication
@@ -129,11 +128,7 @@ def main():
                     score = output['mastery_score']
                     print(f"--- Current Mastery Score: {score} ---")
                     if score >= 0.9:
-                        print("*** Mastery threshold reached (>= 0.9). Interaction finished. You may start a new topic. ***")
-                        finished = True
-                        break
-            if finished:
-                break
+                        print("*** Mastery threshold reached (>= 0.9). You may start a new topic. ***")
 
         # Persist only when history is enabled
         if history_enabled:
