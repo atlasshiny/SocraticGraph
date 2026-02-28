@@ -87,8 +87,8 @@ class SocraticAgents():
         """
         import re
         try:
-            # Look for any decimal number in the response (e.g., '0.8' or 'Score: 0.5')
-            match = re.search(r"(\d\.\d)", ai_output)
+            # Look for any decimal number in the response (e.g., '0.8', '0.95', or '1.0')
+            match = re.search(r"(\d+\.\d+)", ai_output)
             if match:
                 return float(match.group(1))
             return 0.0 # Default if no score found
