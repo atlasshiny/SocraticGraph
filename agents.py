@@ -85,7 +85,6 @@ class SocraticAgents():
         Returns:
             float: The parsed score, or 0.0 if not found.
         """
-        """Helper to extract a numerical score from the Dialectic agent's text."""
         import re
         try:
             # Look for any decimal number in the response (e.g., '0.8' or 'Score: 0.5')
