@@ -30,12 +30,8 @@ def create_agent_graph(agents: SocraticAgents):
     state.add_edge("aporia", "dialectic")
     state.add_edge("maieutics", "dialectic")
 
-    # Dialectic evaluates mastery: loop back to arbiter if below threshold, else finish.
-    def dialectic_router(state):
-        if state.get("mastery_score", 0) >= 0.9:
-            return END
-        return "arbiter"
-
-    state.add_conditional_edges("dialectic", dialectic_router)
+    # Dialectic always ends the current graph execution.
+    # The outer while-loop in main.py re-prompts the user and re-invokes the graph with updated history, so the user can respond each cycle.
+    state.add_edge("dialectic", END)
 
     return state.compile()
