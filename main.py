@@ -1,8 +1,16 @@
+import logging
 from pathlib import Path
 
 from agents import SocraticAgents
 from agent_graph import create_agent_graph
 from langchain_core.messages import AIMessage, HumanMessage
+
+LOG_FILE = "socratic.log"
+logger = logging.getLogger("socratic")
+logger.setLevel(logging.DEBUG)
+_fh = logging.FileHandler(LOG_FILE, encoding="utf-8")
+_fh.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+logger.addHandler(_fh)
 from history import (
     HISTORY_ENABLED_DEFAULT,
     HISTORY_FILE_NAME,
@@ -121,9 +129,11 @@ def main():
                             if isinstance(node_message, AIMessage):
                                 agent_messages.append(node_message)
                         print(f"\n[{node_name.upper()}]: {node_messages[-1].content}")
-                # Print raw arbiter output for debugging when available
+                # Log raw arbiter/dialectic output to file instead of printing
                 if "arbiter_raw" in output:
-                    print(f"[ARBITER_RAW]: {output['arbiter_raw']}")
+                    logger.debug("[ARBITER_RAW]: %s", output['arbiter_raw'])
+                if "dialectic_raw" in output:
+                    logger.debug("[DIALECTIC_RAW]: %s", output['dialectic_raw'])
                 if "mastery_score" in output:
                     score = output['mastery_score']
                     print(f"--- Current Mastery Score: {score} ---")
